@@ -1,0 +1,61 @@
+{
+  "name": "react-tuto",
+  "version": "0.0.1",
+  "description": "react tutorial",
+  "main": "index.html",
+  "repository": "https://github.com/duongphuhiep/react-voting",
+  "author": "hiep",
+  "license": "MIT",
+  "jest": {
+    "unmockedModulePathPatterns": [
+      "<rootDir>/node_modules/react",
+      "<rootDir>/node_modules/react-dom",
+      "<rootDir>/node_modules/immutable",
+      "<rootDir>/node_modules/lodash",
+      "<rootDir>/node_modules/underscore"
+    ]
+  },
+  "scripts": {
+    "bundle": "webpack --progress --color",
+    "bundle:watch": "webpack --watch",
+    "start": "node server",
+    "test": "jest",
+    "test:watch": "jest --watch=all"
+  },
+  "dependencies": {
+    "classnames": "^2.2.2",
+    "history": "^2.1.1",
+    "immutable": "^3.8.1",
+    "react": "^15.0.2",
+    "react-dom": "^15.0.2",
+    "react-redux": "^4.4.5",
+    "react-router": "^2.4.0",
+    "redux": "^3.5.2"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.2.3",
+    "babel-core": "^6.3.26",
+    "babel-eslint": "^6.0.4",
+    "babel-jest": "^12.0.2",
+    "babel-loader": "^6.2.0",
+    "babel-plugin-rewire": "^1.0.0-rc-2",
+    "babel-polyfill": "^6.8.0",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "babel-preset-stage-0": "^6.3.13",
+    "chai": "^3.5.0",
+    "chai-immutable": "^1.5.4",
+    "css-loader": "^0.23.1",
+    "eslint-plugin-react": "^5.0.1",
+    "jest-cli": "^12.0.2",
+    "postcss-loader": "^0.9.1",
+    "precss": "^1.4.0",
+    "react-addons-test-utils": "^15.0.2",
+    "react-hot-loader": "^1.3.0",
+    "react-redux": "^4.4.5",
+    "rewire": "^2.5.1",
+    "style-loader": "^0.13.0",
+    "webpack": "^1.12.9",
+    "webpack-dev-server": "^1.14.0"
+  }
+}
