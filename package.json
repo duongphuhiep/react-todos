@@ -1,9 +1,9 @@
 {
   "name": "react-tuto",
   "version": "0.0.1",
-  "description": "react tutorial",
+  "description": "react, redux, jest, immutable battle fields",
   "main": "index.html",
-  "repository": "https://github.com/duongphuhiep/react-voting",
+  "repository": "https://github.com/duongphuhiep/react-todos",
   "author": "hiep",
   "license": "MIT",
   "jest": {
