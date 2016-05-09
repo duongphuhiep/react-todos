@@ -1,29 +1,35 @@
 import React, {Component} from 'react'
-import { render } from 'react-dom'
-import {TodoList} from './components/index'
+import {render} from 'react-dom'
 import {createStore} from "redux"
+import {Provider} from "react-redux"
 import {Map} from "immutable"
+import BindedTodoList from './components/TodoList'
+import rootReducer from  "./reducers"
 
-let todoList = Map({
-  "1": Map({
-    id: "1",
-    complete: true,
-    text: "foo"
-  }),
-  "2": Map({
-    id: "2",
-    complete: false,
-    text: "bar"
+let initialState = Map({
+  todos: Map({
+    "a": Map({
+      id: "a",
+      complete: true,
+      text: "foo"
+    }),
+    "b": Map({
+      id: "b",
+      complete: false,
+      text: "bar"
+    })
   })
 })
+
+let store = createStore(rootReducer, initialState)
 
 class App extends Component {
   render() {
     return (
-      <div>
-        <TodoList onTodoClick={(id) => alert(id)} todos={todoList.toArray()} />
-      </div>
-      );
+      <Provider store={store}>
+        <BindedTodoList />
+      </Provider>
+    );
   }
 }
 

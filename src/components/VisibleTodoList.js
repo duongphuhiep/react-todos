@@ -24,7 +24,7 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 import {connect} from 'react-redux'
-import {TodoList} from "../components/index"
+import TodoList from "./TodoList"
 
 const VisibleTodoList = connect(
   mapStateToProps,

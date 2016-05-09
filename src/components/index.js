@@ -3,41 +3,10 @@ import {Map} from "immutable"
 //import FilterLink from '../containers/FilterLink'
 
 //--
-export const Todo = ({ onClick, complete, text }) => (
-  <li
-    onClick={onClick}
-    style={{
-      textDecoration: complete ? 'line-through' : 'none'
-    }}
-  >
-    {text}
-  </li>
-);
 
-Todo.propTypes = {
-  onClick: PropTypes.func.isRequired,
-  complete: PropTypes.bool.isRequired,
-  text: PropTypes.string.isRequired
-};
 
 
 //--
-export const TodoList = ({ todos, onTodoClick }) => (
-  <ul>
-    {todos.map(todo =>
-      <Todo
-        key={todo.get("id")}
-        complete={todo.get("complete")}
-        text={todo.get("text")}
-        onClick={() => onTodoClick(todo.get("id"))}
-      />
-    )}
-  </ul>
-);
-
-TodoList.propTypes = {
-  onTodoClick: PropTypes.func.isRequired
-};
 
 /*
 TodoList.propTypes = {
