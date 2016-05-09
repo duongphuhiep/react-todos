@@ -2,25 +2,26 @@ import React, {Component} from 'react'
 import { render } from 'react-dom'
 import {TodoList} from './components/index'
 import {createStore} from "redux"
+import {Map} from "immutable"
 
-let TodoData = [
-  {
-    id: 1,
-    text: "completed",
-    completed: true
-  },
-  {
-    id: 2,
-    text: "incompleted",
-    completed: false
-  }
-];
+let todoList = Map({
+  "1": Map({
+    id: "1",
+    complete: true,
+    text: "foo"
+  }),
+  "2": Map({
+    id: "2",
+    complete: false,
+    text: "bar"
+  })
+})
 
 class App extends Component {
   render() {
     return (
       <div>
-        <TodoList onTodoClick={(id) => alert(id)} todos={TodoData} />
+        <TodoList onTodoClick={(id) => alert(id)} todos={todoList.toArray()} />
       </div>
       );
   }

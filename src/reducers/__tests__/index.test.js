@@ -1,7 +1,7 @@
-jest.unmock("../index")
+jest.unmock("../")
 
 import {Map} from "immutable"
-import ReducersModule from "../index"
+import ReducersModule from "../"
 
 describe("TodoItem", ()=> {
   let todoItem = Map({

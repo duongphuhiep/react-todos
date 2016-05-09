@@ -1,12 +1,13 @@
 import React, {PropTypes} from 'react'
+import {Map} from "immutable"
 //import FilterLink from '../containers/FilterLink'
 
 //--
-export const Todo = ({ onClick, completed, text }) => (
+export const Todo = ({ onClick, complete, text }) => (
   <li
     onClick={onClick}
     style={{
-      textDecoration: completed ? 'line-through' : 'none'
+      textDecoration: complete ? 'line-through' : 'none'
     }}
   >
     {text}
@@ -15,7 +16,7 @@ export const Todo = ({ onClick, completed, text }) => (
 
 Todo.propTypes = {
   onClick: PropTypes.func.isRequired,
-  completed: PropTypes.bool.isRequired,
+  complete: PropTypes.bool.isRequired,
   text: PropTypes.string.isRequired
 };
 
@@ -25,22 +26,29 @@ export const TodoList = ({ todos, onTodoClick }) => (
   <ul>
     {todos.map(todo =>
       <Todo
-        key={todo.id}
-        {...todo}
-        onClick={() => onTodoClick(todo.id)}
+        key={todo.get("id")}
+        complete={todo.get("complete")}
+        text={todo.get("text")}
+        onClick={() => onTodoClick(todo.get("id"))}
       />
     )}
   </ul>
 );
 
 TodoList.propTypes = {
+  onTodoClick: PropTypes.func.isRequired
+};
+
+/*
+TodoList.propTypes = {
   todos: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
-    completed: PropTypes.bool.isRequired,
+    complete: PropTypes.bool.isRequired,
     text: PropTypes.string.isRequired
   }).isRequired).isRequired,
   onTodoClick: PropTypes.func.isRequired
 };
+*/
 
 
 //--
@@ -80,8 +88,8 @@ Link.propTypes = {
 //       Active
 //     </FilterLink>
 //     {", "}
-//     <FilterLink filter="SHOW_COMPLETED">
-//       Completed
+//     <FilterLink filter="SHOW_complete">
+//       complete
 //     </FilterLink>
 //   </p>
 // );

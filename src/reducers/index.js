@@ -23,12 +23,13 @@ const rootReducer = (state = {}, action) => {
         text: action.text
       })
       let todoList = state.get("todos")
-      return todoList.add(action.id, todoItem);
+      let updatedTodos = todoList.set(action.id, todoItem);
+      return state.set("todos", updatedTodos);
     }
     case "TOGGLE_TODO":
     {
       let todoList = state.get("todos")
-      let updatedTodos = toggleItemInList(todoList, state.id);
+      let updatedTodos = toggleItemInList(todoList, action.id);
       return state.set("todos", updatedTodos);
     }
     default:
