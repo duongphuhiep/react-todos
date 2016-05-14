@@ -1,13 +1,19 @@
 import React, {PropTypes} from 'react'
 
+require('./TodoItem.css');
+
 const TodoItem = ({ onClick, complete, text }) => (
-  <li
-    onClick={onClick}
-    style={{
-      textDecoration: complete ? 'line-through' : 'none'
-    }}
-  >
-    {text}
+  <li className="TodoItem">
+    <span
+          onClick={onClick}
+          style={{
+            //display: "inline-block",
+            textDecoration: complete ? 'line-through' : 'none'
+          }}
+    >
+      {text}
+    </span>
+    <button className="remove">X</button>
   </li>
 );
 
