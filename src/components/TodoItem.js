@@ -1,9 +1,11 @@
 import React, {PropTypes} from 'react'
+import {connect} from 'react-redux'
+import {removeTodo} from '../actions'
 
 require('./TodoItem.css');
 
-const TodoItem = ({ onClick, complete, text }) => (
-  <li className="TodoItem">
+const TodoItem = ({ onClick, removeClick, complete, text, id}) => (
+  <li className="TodoItem" id={id}>
     <span
           onClick={onClick}
           style={{
@@ -13,9 +15,9 @@ const TodoItem = ({ onClick, complete, text }) => (
     >
       {text}
     </span>
-    <button className="remove">X</button>
+    <button className="remove" onClick={()=>removeClick(id)}>X</button>
   </li>
-);
+)
 
 TodoItem.propTypes = {
   onClick: PropTypes.func.isRequired,
@@ -23,4 +25,9 @@ TodoItem.propTypes = {
   text: PropTypes.string.isRequired
 };
 
-export default TodoItem
+const mapDispatchToProps = (dispatch) => {
+  return { removeClick: (id)=>dispatch(removeTodo(id)) }
+}
+
+
+export default connect(null, mapDispatchToProps)(TodoItem);

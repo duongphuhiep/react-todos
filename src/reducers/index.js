@@ -32,6 +32,12 @@ const rootReducer = (state = {}, action) => {
       let updatedTodos = toggleItemInList(todoList, action.id);
       return state.set("todos", updatedTodos);
     }
+    case "REMOVE_TODO":
+    {
+      let todoList = state.get("todos")
+      let updatedTodos = todoList.delete(action.id);
+      return state.set("todos", updatedTodos);
+    }
     default:
       return state;
   }

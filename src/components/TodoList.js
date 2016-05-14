@@ -7,6 +7,7 @@ const TodoList = ({ todosData, onTodoClick }) => (
   <ul>
     {todosData.map(todoItemData =>
       <TodoItem
+        id={todoItemData.get("id")}
         key={todoItemData.get("id")}
         complete={todoItemData.get("complete")}
         text={todoItemData.get("text")}
