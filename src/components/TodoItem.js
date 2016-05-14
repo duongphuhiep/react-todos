@@ -4,20 +4,21 @@ import {removeTodo} from '../actions'
 
 require('./TodoItem.css');
 
-const TodoItem = ({ onClick, removeClick, complete, text, id}) => (
-  <li className="TodoItem" id={id}>
-    <span
-          onClick={onClick}
-          style={{
-            //display: "inline-block",
-            textDecoration: complete ? 'line-through' : 'none'
-          }}
-    >
-      {text}
-    </span>
-    <button className="remove" onClick={()=>removeClick(id)}>X</button>
-  </li>
-)
+const TodoItem = ({ onClick, complete, text, id, dispatch} ) => {
+  return (
+    <li className="TodoItem" id={id}>
+      <span
+        onClick={onClick}
+        style={{
+              textDecoration: complete ? 'line-through' : 'none'
+            }}
+      >
+        {text}
+      </span>
+      <button className="remove" onClick={()=>dispatch(removeTodo(id))}>X</button>
+    </li>
+  )
+}
 
 TodoItem.propTypes = {
   onClick: PropTypes.func.isRequired,
@@ -25,9 +26,4 @@ TodoItem.propTypes = {
   text: PropTypes.string.isRequired
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return { removeClick: (id)=>dispatch(removeTodo(id)) }
-}
-
-
-export default connect(null, mapDispatchToProps)(TodoItem);
+export default connect()(TodoItem);
