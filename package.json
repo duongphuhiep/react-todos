@@ -7,6 +7,7 @@
   "author": "hiep",
   "license": "MIT",
   "jest": {
+    "scriptPreprocessor": "jest-preprocessor",
     "unmockedModulePathPatterns": [
       "<rootDir>/node_modules/react",
       "<rootDir>/node_modules/redux",
@@ -20,8 +21,8 @@
     "bundle": "webpack --progress --color",
     "bundle:watch": "webpack --watch",
     "start": "node server",
-    "test": "jest",
-    "test:watch": "jest --watch=all"
+    "test": "jest --no-cache",
+    "test:watch": "jest --watch --no-cache"
   },
   "dependencies": {
     "classnames": "^2.2.2",
