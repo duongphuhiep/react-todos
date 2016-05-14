@@ -3,8 +3,9 @@ import {render} from 'react-dom'
 import {createStore} from "redux"
 import {Provider} from "react-redux"
 import {Map} from "immutable"
-import BindedTodoList from './components/TodoList'
+import TodoList from './components/TodoList'
 import rootReducer from  "./reducers"
+import AddTodo from './components/AddTodo'
 
 let initialState = Map({
   todos: Map({
@@ -23,11 +24,18 @@ let initialState = Map({
 
 let store = createStore(rootReducer, initialState)
 
+// store.subscribe(()=>{
+//   console.info(store.getState());
+// })
+
 class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <BindedTodoList />
+        <div>
+          <AddTodo />
+          <TodoList />
+        </div>
       </Provider>
     );
   }
