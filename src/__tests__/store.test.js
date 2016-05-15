@@ -45,7 +45,6 @@ describe("raw dispatcher", ()=>{
 
   it("should remove item", ()=>{
     store.dispatch(removeTodo("a"))
-    console.log(store.getState().get("todos"))
     expect(store.getState().get("todos").size).toBe(1)
     expect(store.getState().get("todos").first().get("id")).toBe("b");
   })
