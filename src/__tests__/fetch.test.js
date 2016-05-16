@@ -1,5 +1,7 @@
 jest.unmock('isomorphic-fetch')
+jest.unmock('timers')
 import fetch from 'isomorphic-fetch'
+import {setTimeout} from 'timers'
 
 describe("Hello fetch", ()=> {
 
@@ -68,4 +70,29 @@ describe("Hello fetch", ()=> {
       })
   })
 
+})
+
+
+describe("Promise creation", ()=>{
+
+  //create a promise which return "Hello thunk" after 10ms
+  let p = new Promise((resolve, reject) => {
+    setTimeout(
+      function(){
+        let msg = "Hello thunk"
+        resolve(msg)
+      }
+      , 10)
+  })
+
+  //test how it work
+  pit("should ok after 10ms", () => {
+    p.then((resu)=>{
+      expect(resu).toEqual("Hello thunk")
+    })
+    .catch(err=>{
+      console.error(err)
+    })
+    return p;
+  })
 })
