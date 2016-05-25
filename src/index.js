@@ -1,18 +1,21 @@
 import React, {Component} from 'react'
 import {render} from 'react-dom'
-import {createStore} from "redux"
+import thunkMiddleware from 'redux-thunk'
+import createLogger from 'redux-logger'
+import {createStore, applyMiddleware} from "redux"
 import {Provider} from "react-redux"
 import {Map} from "immutable"
 import TodoList from './components/TodoList'
 import rootReducer from  "./reducers"
 import AddTodo from './components/AddTodo'
+import InvokeThunk from './components/InvokeThunk'
 
 let initialState = Map({
   todos: Map({
     "a": Map({
       id: "a",
       complete: true,
-      text: "foo"
+      text: "fooo"
     }),
     "b": Map({
       id: "b",
@@ -22,11 +25,26 @@ let initialState = Map({
   })
 })
 
-let store = createStore(rootReducer, initialState)
+// let store = createStore(rootReducer, initialState, applyMiddleware(
+//   //thunkMiddleware, // lets us dispatch() functions
+//   loggerMiddleware // neat middleware that logs actions
+// ))
 
 // store.subscribe(()=>{
 //   console.info(store.getState());
 // })
+
+let loggerMiddleware = createLogger({
+  collapsed: true,
+  stateTransformer: state => state.toJS() //transform immutable object to a more readable format in log
+});
+
+let store = createStore(rootReducer, initialState,
+  applyMiddleware(
+    //loggerMiddleware,
+    thunkMiddleware
+  )
+)
 
 class App extends Component {
   render() {
@@ -35,6 +53,7 @@ class App extends Component {
         <div>
           <AddTodo />
           <TodoList />
+          <InvokeThunk />
         </div>
       </Provider>
     );

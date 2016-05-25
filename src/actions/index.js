@@ -27,3 +27,36 @@ export const removeTodo = (id) => {
     id
   }
 };
+
+export const startFetch = (url) => {
+  return {
+    type: "START_FETCH",
+    url
+  }
+}
+
+export const endFetch = () => {
+  return {
+    type: "END_FETCH"
+  }
+}
+
+export const addThunkItem = () => {
+  return (dispatch) => {
+    let newItemName = "Thunk start"
+
+    let promise = new Promise((resolve, reject) => {
+      setTimeout(
+        ()=> {
+          let newItemName = "Thunk end"
+          dispatch(addTodo(newItemName))
+          resolve(newItemName)
+        }
+        , 1000)
+    })
+
+    dispatch(addTodo(newItemName))
+
+    return promise
+  }
+}
