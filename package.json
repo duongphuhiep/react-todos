@@ -27,6 +27,7 @@
   "dependencies": {
     "classnames": "^2.2.2",
     "es6-promise": "^3.2.1",
+    "falcor": "^0.1.17",
     "history": "^2.1.1",
     "immutable": "^3.8.1",
     "isomorphic-fetch": "^2.2.1",
