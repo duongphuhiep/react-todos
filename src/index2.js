@@ -3,11 +3,11 @@ import HttpDataSource from "falcor-http-datasource"
 
 
 var model = new FalcorModel({
-  //source: new HttpDataSource('//localhost:9090/model.json')
-  source: new HttpDataSource('/model.json')
+  source: new HttpDataSource('//localhost:9090/model.json')
+  //source: new HttpDataSource('/model.json')
 })
 
-model.getValue(["productListById", 15, "name"])
+model.getValue("stock[3].quantity")
   .then(
     (v)=>{
       console.log(v)

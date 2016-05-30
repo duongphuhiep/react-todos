@@ -34,8 +34,12 @@ var model = new falcor.Model({
         quantity: 150
       },
       {
-        product: $ref("productListById[16]"),
+        product: $ref("productListById[1000]"), //try a not exist reference
         quantity: 200
+      },
+      {
+        product: $ref("productListById[17]"),
+        quantity: 100
       }
     ]
   }
@@ -53,7 +57,10 @@ app.use(function(req, res, next) {
 app.use('/model.json', falcorExpress.dataSourceRoute(function(req, res) {
   console.log("recv: ", req.url);
   // Passing in the user ID, this should be retrieved via some auth system
-  return model.asDataSource();
+  var resu = model.asDataSource();
+
+  //console.log("reply: ", resu);
+  return resu
 }));
 
 //app.use(express.static('.'));
