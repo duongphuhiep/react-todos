@@ -4,7 +4,6 @@ import {Model as FalcorModel} from "falcor"
 describe("model basic", ()=>{
 
   var $ref = FalcorModel.ref
-  console.log($ref)
 
   let model = new FalcorModel({
     cache: {
@@ -37,6 +36,22 @@ describe("model basic", ()=>{
       ]
     }
   })
+
+  //console.info(JSON.stringify(model.asDataSource(), null, 2))
+
+  pit("boxValues 1", ()=>{
+    return model.boxValues().getValue("stock[1].product.name").then((v)=>{
+      console.info(JSON.stringify(v, null, 2))
+      //expect(v).toEqual("nexus")
+    })
+  })
+
+  pit("boxValues 2", ()=>{
+    return model.get("stock[0..1].product['name', 'price']").then((v)=>{
+      console.info(JSON.stringify(v, null, 2))
+    })
+  })
+
 
   pit("get value should async", ()=>{
     return model.getValue("stock[1].product.name").then((v)=>{
@@ -74,8 +89,6 @@ describe("model basic", ()=>{
     })
   })
 
+
+
 })
-
-
-
-

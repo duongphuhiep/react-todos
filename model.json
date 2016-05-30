@@ -1,0 +1,16 @@
+{
+  "jsonGraph": {
+    "productListById": {
+      "15": {
+        "name": "iphone"
+      }
+    }
+  },
+  "paths": [
+    [
+      "productListById",
+      15,
+      "name"
+    ]
+  ]
+}

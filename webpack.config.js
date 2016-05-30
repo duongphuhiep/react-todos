@@ -5,14 +5,15 @@ var precss = require('precss');
 
 module.exports = {
   devtool: 'eval',
-  entry: [
+  entry: {
     // 'webpack-dev-server/client?http://localhost:3000',
     // 'webpack/hot/only-dev-server',
-    './src/index'
-  ],
+    bundle: './src/index',
+    bundle2: './src/index2'
+  },
   output: {
     path: path.join(__dirname, '_dist'),
-    filename: 'bundle.js',
+    filename: '[name].js',
     publicPath: '/_dist/'
   },
   // plugins: [
